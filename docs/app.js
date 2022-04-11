@@ -1,6 +1,6 @@
 'use strict';
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoid2FsbGFieXdheSIsImEiOiJjazBuaDQ5OGgxaHFwM2NvMm8wN2Ewb2xpIn0.1XKDCgUA5YKI_U9NGh4fqg';
+mapboxgl.accessToken = 'pk.eyJ1Ijoia2FpbmV0a29uYW55dW4iLCJhIjoiY2wxdWw5NGw4Mm9qbDNjbzJsYmkxZzhydyJ9.-17EAs71jvBDW2PN4C81Fg';
 
 // parameters to ensure the model is georeferenced correctly on the map
 let modelAltitude = 0;
