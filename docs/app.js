@@ -83,7 +83,7 @@ class glTFLayer {
 
         // use the three.js GLTF loader to add the 3D model to the three.js scene
         var loader = new THREE.GLTFLoader();
-        loader.load('C:/Users/KMAL-TERRY/mapboxRevit-master/mapboxRevit/docs/gltf/output.gltf', (function(gltf) {
+        loader.load('https://github.com/geoffreykirui/jeddadome/blob/main/docs/gltf/output.gltf', (function(gltf) {
             this.scene.add(gltf.scene);
         }).bind(this));
         this.map = map;
