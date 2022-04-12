@@ -5,7 +5,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoia2FpbmV0a29uYW55dW4iLCJhIjoiY2wxdWw5NGw4Mm9qb
 // parameters to ensure the model is georeferenced correctly on the map
 let modelAltitude = 0;
 let modelRotate = [0, 0, -Math.PI / 10];
-let modelOrigin = [39.16437, 21.76310];  //use gltf/output.metadata.json -> metadata.georeference.positionLL84[lat,long]
+let modelOrigin = [-71.059505, 42.349448];  //use gltf/output.metadata.json -> metadata.georeference.positionLL84[lat,long]
 const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(modelOrigin, modelAltitude);
 
 
