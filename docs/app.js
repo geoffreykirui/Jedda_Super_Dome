@@ -83,7 +83,7 @@ class glTFLayer {
 
         // use the three.js GLTF loader to add the 3D model to the three.js scene
         var loader = new THREE.GLTFLoader();
-        loader.load('gltf/34M_17.gltf', (function(gltf) {
+        loader.load('gltf/output.gltf', (function(gltf) {
             this.scene.add(gltf.scene);
         }).bind(this));
         this.map = map;
@@ -191,5 +191,5 @@ map.on('click', function(e) { gltf.onClick(e) });
 
 
 // Load 3D extruded buildings as layer
-const buildings = new buildingsLayer();
-map.on('load', function() { map.addLayer(buildings) });
+// const buildings = new buildingsLayer();
+// map.on('load', function() { map.addLayer(buildings) });
