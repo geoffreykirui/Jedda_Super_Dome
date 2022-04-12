@@ -67,7 +67,12 @@ class glTFLayer {
         // set bbox as 5px reactangle area around clicked point
         //var bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
     }
-
+	const THREE = window.THREE;
+    // configuration of the custom layer for a 3D model per the CustomLayerInterface
+    const customLayer = {
+        id: '3d-model',
+        type: 'custom',
+        renderingMode: '3d',
     onAdd(map, gl) {
         this.camera = new THREE.PerspectiveCamera();
         this.scene = new THREE.Scene();
