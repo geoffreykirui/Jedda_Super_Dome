@@ -83,7 +83,7 @@ class glTFLayer {
 
         // use the three.js GLTF loader to add the 3D model to the three.js scene
         var loader = new THREE.GLTFLoader();
-        loader.load('gltf/output.gltf', (function(gltf) {
+        loader.load('gltf/6877ae06105f4aa1a8620854f2af00ec.gltf', (function(gltf) {
             this.scene.add(gltf.scene);
         }).bind(this));
         this.map = map;
