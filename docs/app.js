@@ -35,26 +35,26 @@ class glTFLayer {
             // 0.2 is a scale factor that should come from LMV
             scale: 0.2 * modelAsMercatorCoordinate.meterInMercatorCoordinateUnits()
         };
-    //}
+    }
 
-    //showPropertiesFromForge(id) {
-    	//const forgeURL = 'https://developer.api.autodesk.com';
-    	//const urn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dnJwYXJ0eTEvcmFjX2FsbHZpZXdzMy5ydnQ";
-    	//const guid = "6c9aa7c5-0799-1c3c-a715-3ed2aafa21ab";
-    	//const token = _adsk.token.access_token;
-    	//fetch(`${forgeURL}/modelderivative/v2/designdata/${urn}/metadata/${guid}/properties`,
-    	//	{ mode: 'cors', headers: { Accept: 'application/json', Authorization:`Bearer ${token}` }})
-    	//	.then( res => res.json())
-    	//	.then( res => {
+    showPropertiesFromForge(id) {
+    	const forgeURL = 'https://developer.api.autodesk.com';
+    	const urn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dnJwYXJ0eTEvcmFjX2FsbHZpZXdzMy5ydnQ";
+    	const guid = "6c9aa7c5-0799-1c3c-a715-3ed2aafa21ab";
+    	const token = _adsk.token.access_token;
+    	fetch(`${forgeURL}/modelderivative/v2/designdata/${urn}/metadata/${guid}/properties`,
+    		{ mode: 'cors', headers: { Accept: 'application/json', Authorization:`Bearer ${token}` }})
+    		.then( res => res.json())
+    		.then( res => {
     			//let prop = (res.data.collection.filter(i=>{return i.objectid==id}))[0];
                 // Choose a random DBId, since the raycaster is broken :-(
-    	//		let prop = res.data.collection[Math.round(Math.random()*100)];
-        //		toast.innerHTML = `properties:[ ${prop.name} ]`;
-	//		    toast.classList.add('show');
-    	//		clearTimeout(this.tmout) 
-	  //      	this.tmout = setTimeout(function(){ toast.classList.remove('show') }, 3000);
-    	//	});
-    //}
+    			let prop = res.data.collection[Math.round(Math.random()*100)];
+        		toast.innerHTML = `properties:[ ${prop.name} ]`;
+			    toast.classList.add('show');
+    			clearTimeout(this.tmout) 
+	        	this.tmout = setTimeout(function(){ toast.classList.remove('show') }, 3000);
+    		});
+    }
 
     onClick(e) {
 		if (!this.camera) return;
@@ -67,12 +67,7 @@ class glTFLayer {
         // set bbox as 5px reactangle area around clicked point
         //var bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
     }
-	const THREE = window.THREE;
-    // configuration of the custom layer for a 3D model per the CustomLayerInterface
-    const customLayer = {
-        id: '3d-model',
-        type: 'custom',
-        renderingMode: '3d',
+	
     onAdd(map, gl) {
         this.camera = new THREE.PerspectiveCamera();
         this.scene = new THREE.Scene();
