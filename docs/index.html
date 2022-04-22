@@ -3,6 +3,41 @@
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.min.css" type="text/css">
+    var viewer;
+var options = {
+    env: 'AutodeskProduction2',
+    api: 'streamingV2',  // for models uploaded to EMEA change this option to 'streamingV2_EU'
+    getAccessToken: function(onTokenReady) {
+        var token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IlU3c0dGRldUTzlBekNhSzBqZURRM2dQZXBURVdWN2VhIn0.eyJzY29wZSI6WyJjb2RlOmFsbCIsImRhdGE6d3JpdGUiLCJkYXRhOnJlYWQiLCJidWNrZXQ6Y3JlYXRlIiwiYnVja2V0OmRlbGV0ZSIsImJ1Y2tldDpyZWFkIl0sImNsaWVudF9pZCI6Ik1FMm1MaUFwNk9ycWlBUEx4Q2hkd3hQRFVWYk5GVUs0IiwiYXVkIjoiaHR0cHM6Ly9hdXRvZGVzay5jb20vYXVkL2Fqd3RleHA2MCIsImp0aSI6IjVwenZyZ2h1MEVNU1IwMGlkdFVUYlUzRm5jQjQ5MFNaT0JjUXVHZ1Q2eUxCVlUzMnFvNWJiOUk4SFRaQXlMUjAiLCJleHAiOjE2NTA1NDgwNDV9.M2kZyhoNItYCr8RFHu2UsP2ALdpuD30g7bqQU924Iw49aKJOcsaM4K-0Aena1cLOIQ1ERLQk-6vRgRwwJ6WOVmEN_NYe9uRaqLTlwt5uUJwF6bvrhPyXZAZKnLYYFKAccz1uJkhcaH0H3PkO0y-nJKVqqB4DeiUiaROhAr4BUli6EBvdcgGi-HrjQo0FxTCGFTxyOPXwsOlrIW34NIJ-OgSW4BYUppSBQ4DiWVVnI1tufdUuMvW5XM7ilJRZJBcHULHIm7DEsxkJOZs3tHIOYDesYSNUGftU2Ip5HbFmboeMpFrVLZsCO1AWqWJGdUnJa1_750lWX1E2pJm7uVbHDw';
+        var timeInSeconds = 3600; // Use value provided by Forge Authentication (OAuth) API
+        onTokenReady(token, timeInSeconds);
+    var documentId = '
+urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6YnVja2V0M2QvSmVkZGFoJTIwU3VwZXIlMjBEb21lX0VfMTItMV8wMDEuemlw';
+Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
+    
+    function onDocumentLoadSuccess(viewerDocument){
+    //viewerDocument is an instance of Autodesk.Viewing.Document
+    }
+    function onDocumentLoadFailure() {
+    console.error('Failed fetching Forge manifest');
+    }
+    }
+};
+
+Autodesk.Viewing.Initializer(options, function() {
+
+    var htmlDiv = document.getElementById('forgeViewer');
+    viewer = new Autodesk.Viewing.GuiViewer3D(htmlDiv);
+    var startedCode = viewer.start();
+    if (startedCode > 0) {
+        console.error('Failed to create a Viewer: WebGL not supported.');
+        return;
+    }
+
+    console.log('Initialization complete, loading a model next...');
+
+});
+
     <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.min.js"></script>
 
     <style>
