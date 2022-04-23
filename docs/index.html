@@ -49,7 +49,14 @@ Autodesk.Viewing.Initializer(options, function() {
 
     var htmlDiv = document.getElementById('forgeViewer');
     viewer = new Autodesk.Viewing.GuiViewer3D(htmlDiv);
-    viewer.start();
+    //viewer.start();
+    var startedCode = viewer.start();
+    if (startedCode > 0) {
+        console.error('Failed to create a Viewer: WebGL not supported.');
+        return;
+    }
+
+    console.log('Initialization complete, loading a model next...');
     Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
 
     function onDocumentLoadSuccess(viewerDocument) {
