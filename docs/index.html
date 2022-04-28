@@ -13,7 +13,7 @@
 
 var viewer;
 var options = {
-    env: 'AutodeskProduction',
+    env: 'AutodeskProduction2',
     api: 'derivativeV2_EU',  // for models uploaded to EMEA change this option to 'derivativeV2_EU'
     getAccessToken: function(onTokenReady) {
         //
@@ -33,7 +33,7 @@ var options = {
     }
 };
 
-var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6amVkZGFidWNrZXQwMDEvSmVkZGFoX1N1cGVyX0RvbWVfRV8xMi0xXzAwMS56aXA';
+// var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6amVkZGFidWNrZXQwMDEvSmVkZGFoX1N1cGVyX0RvbWVfRV8xMi0xXzAwMS56aXA';
 Autodesk.Viewing.Initializer(options, function() {
 
     var htmlDiv = document.getElementById('forgeViewer');
@@ -58,6 +58,9 @@ Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoad
 function onDocumentLoadSuccess(viewerDocument) {
     var defaultModel = viewerDocument.getRoot().getDefaultGeometry();
     viewer.loadDocumentNode(viewerDocument, defaultModel);
+   // var viewables = viewerDocument.getRoot().search({'type':'geometry'});
+   // viewer.loadDocumentNode(viewerDocument, viewables[0]);
+
 }
 
 function onDocumentLoadFailure() {
