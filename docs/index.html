@@ -1,15 +1,26 @@
 <!DOCTYPE html>
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Autodesk Forge Viewer files (IMPORTANT) -->
     <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.css">
     <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.js"></script>
+    <style>
+        /** Just simple CSS styling to make this page a little nicer **/
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
+  <!-- The Viewer will be instantiated here -->
   <div id="forgeViewer"></div>
+  <!-- Custom script -->
   <script>
-
     var viewer;
     var options = {
         env: 'AutodeskProduction2',
@@ -31,7 +42,7 @@
             onTokenReady(token, timeInSeconds);
         }
     };
-    
+            // Run this when the page is loaded
     // var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6amVkZGFidWNrZXQwMDEvSmVkZGFoX1N1cGVyX0RvbWVfRV8xMi0xXzAwMS56aXA';
     Autodesk.Viewing.Initializer(options, function() {
     
