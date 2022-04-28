@@ -52,5 +52,17 @@ Autodesk.Viewing.Initializer(options, function() {
     }    
 
 });
+var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6amVkZGFidWNrZXQwMDEvSmVkZGFoX1N1cGVyX0RvbWVfRV8xMi0xXzAwMS56aXA';
+Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
+
+function onDocumentLoadSuccess(viewerDocument) {
+    var defaultModel = viewerDocument.getRoot().getDefaultGeometry();
+    viewer.loadDocumentNode(viewerDocument, defaultModel);
+}
+
+function onDocumentLoadFailure() {
+    console.error('Failed fetching Forge manifest');
+}
+
 
 </script>
