@@ -49,19 +49,14 @@
         var htmlDiv = document.getElementById('forgeViewer');
         viewer = new Autodesk.Viewing.GuiViewer3D(htmlDiv);
         viewer.start();
-        Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
-    
-        function onDocumentLoadSuccess(viewerDocument) {
-            // Choose the default viewable - most likely a 3D model, rather than a 2D sheet.
-            var defaultModel = viewerDocument.getRoot().getDefaultGeometry();
-            viewer.loadDocumentNode(viewerDocument, defaultModel);
-        }
-    
-        function onDocumentLoadFailure() {
-            console.error('Failed fetching Forge manifest');
-        }    
-    
-    });
+        if (startedCode > 0) {
+        console.error('Failed to create a Viewer: WebGL not supported.');
+        return;
+    }
+
+    console.log('Initialization complete, loading a model next...');
+
+});
     var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6amVkZGFidWNrZXQwMDEvSmVkZGFoX1N1cGVyX0RvbWVfRV8xMi0xXzAwMS56aXA';
     Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
     
