@@ -8,64 +8,66 @@
 
 <body>
   <div id="forgeViewer"></div>
-</body>
-<script>
+  <script>
 
-var viewer;
-var options = {
-    env: 'AutodeskProduction2',
-    api: 'derivativeV2_EU',  // for models uploaded to EMEA change this option to 'derivativeV2_EU'
-    getAccessToken: function(onTokenReady) {
-        //
-        // TODO: Replace static access token string below with call to fetch new token from your backend
-        // Both values are provided by Forge's Authentication (OAuth) API.
-        //
-        // Example Forge's Authentication (OAuth) API return value:
-        // {
-        //    "access_token": "<YOUR_APPLICATION_TOKEN>",
-        //    "token_type": "Bearer",
-        //    "expires_in": 86400
-        // }
-        //    
-        var token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IlU3c0dGRldUTzlBekNhSzBqZURRM2dQZXBURVdWN2VhIn0.eyJzY29wZSI6WyJjb2RlOmFsbCIsImRhdGE6d3JpdGUiLCJkYXRhOnJlYWQiLCJidWNrZXQ6Y3JlYXRlIiwiYnVja2V0OmRlbGV0ZSIsImJ1Y2tldDpyZWFkIl0sImNsaWVudF9pZCI6Ik1FMm1MaUFwNk9ycWlBUEx4Q2hkd3hQRFVWYk5GVUs0IiwiYXVkIjoiaHR0cHM6Ly9hdXRvZGVzay5jb20vYXVkL2Fqd3RleHA2MCIsImp0aSI6InVYYXJJVGNmMEF3RnZLSmdvM2NtN3FlYmppakJ2bWJvYmZQM2M2ck83QmdhQlNHd2dyNFJDVG1vWlExWm1lWVgiLCJleHAiOjE2NTEwNzkyNDZ9.DzlXD9GXjxMdHJSJbIqILnMbWs2qXimvlRKge7_F0RLa7Q9yxxs_7F3XicKeG5BtmtmTCI0SgL-mzrwFdIxVmcsGsGe1zs1uw1yI1yJ5ZKdKJlkz9BdZJsCNzkkvXCewX-pUVz8wZsroUqcmHurrO9rXxTYqgIg2JfbcOcbu6iCNqA18wMoG1UbteieTZ9lNNCnwf0upcFK5ZbCcXXpD8tvPf3n8koWzkLyLxVBYxNgeSKXz1tb03jPJBT5ttZeryOVzIiy4XgBsLRgxzvUlSIt09h1OlLFAItUjnzR247IIn2vDzEV0Aj11Q0XiSSQIvIJOO2oc_EdoYeox2LjJig';
-        var timeInSeconds = 3599; // Use value provided by Forge Authentication (OAuth) API
-        onTokenReady(token, timeInSeconds);
-    }
-};
-
-// var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6amVkZGFidWNrZXQwMDEvSmVkZGFoX1N1cGVyX0RvbWVfRV8xMi0xXzAwMS56aXA';
-Autodesk.Viewing.Initializer(options, function() {
-
-    var htmlDiv = document.getElementById('forgeViewer');
-    viewer = new Autodesk.Viewing.GuiViewer3D(htmlDiv);
-    viewer.start();
+    var viewer;
+    var options = {
+        env: 'AutodeskProduction2',
+        api: 'derivativeV2_EU',  // for models uploaded to EMEA change this option to 'derivativeV2_EU'
+        getAccessToken: function(onTokenReady) {
+            //
+            // TODO: Replace static access token string below with call to fetch new token from your backend
+            // Both values are provided by Forge's Authentication (OAuth) API.
+            //
+            // Example Forge's Authentication (OAuth) API return value:
+            // {
+            //    "access_token": "<YOUR_APPLICATION_TOKEN>",
+            //    "token_type": "Bearer",
+            //    "expires_in": 86400
+            // }
+            //    
+            var token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IlU3c0dGRldUTzlBekNhSzBqZURRM2dQZXBURVdWN2VhIn0.eyJzY29wZSI6WyJjb2RlOmFsbCIsImRhdGE6d3JpdGUiLCJkYXRhOnJlYWQiLCJidWNrZXQ6Y3JlYXRlIiwiYnVja2V0OmRlbGV0ZSIsImJ1Y2tldDpyZWFkIl0sImNsaWVudF9pZCI6Ik1FMm1MaUFwNk9ycWlBUEx4Q2hkd3hQRFVWYk5GVUs0IiwiYXVkIjoiaHR0cHM6Ly9hdXRvZGVzay5jb20vYXVkL2Fqd3RleHA2MCIsImp0aSI6InVYYXJJVGNmMEF3RnZLSmdvM2NtN3FlYmppakJ2bWJvYmZQM2M2ck83QmdhQlNHd2dyNFJDVG1vWlExWm1lWVgiLCJleHAiOjE2NTEwNzkyNDZ9.DzlXD9GXjxMdHJSJbIqILnMbWs2qXimvlRKge7_F0RLa7Q9yxxs_7F3XicKeG5BtmtmTCI0SgL-mzrwFdIxVmcsGsGe1zs1uw1yI1yJ5ZKdKJlkz9BdZJsCNzkkvXCewX-pUVz8wZsroUqcmHurrO9rXxTYqgIg2JfbcOcbu6iCNqA18wMoG1UbteieTZ9lNNCnwf0upcFK5ZbCcXXpD8tvPf3n8koWzkLyLxVBYxNgeSKXz1tb03jPJBT5ttZeryOVzIiy4XgBsLRgxzvUlSIt09h1OlLFAItUjnzR247IIn2vDzEV0Aj11Q0XiSSQIvIJOO2oc_EdoYeox2LjJig';
+            var timeInSeconds = 3599; // Use value provided by Forge Authentication (OAuth) API
+            onTokenReady(token, timeInSeconds);
+        }
+    };
+    
+    // var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6amVkZGFidWNrZXQwMDEvSmVkZGFoX1N1cGVyX0RvbWVfRV8xMi0xXzAwMS56aXA';
+    Autodesk.Viewing.Initializer(options, function() {
+    
+        var htmlDiv = document.getElementById('forgeViewer');
+        viewer = new Autodesk.Viewing.GuiViewer3D(htmlDiv);
+        viewer.start();
+        Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
+    
+        function onDocumentLoadSuccess(viewerDocument) {
+            // Choose the default viewable - most likely a 3D model, rather than a 2D sheet.
+            var defaultModel = viewerDocument.getRoot().getDefaultGeometry();
+            viewer.loadDocumentNode(viewerDocument, defaultModel);
+        }
+    
+        function onDocumentLoadFailure() {
+            console.error('Failed fetching Forge manifest');
+        }    
+    
+    });
+    var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6amVkZGFidWNrZXQwMDEvSmVkZGFoX1N1cGVyX0RvbWVfRV8xMi0xXzAwMS56aXA';
     Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
-
+    
     function onDocumentLoadSuccess(viewerDocument) {
-        // Choose the default viewable - most likely a 3D model, rather than a 2D sheet.
         var defaultModel = viewerDocument.getRoot().getDefaultGeometry();
         viewer.loadDocumentNode(viewerDocument, defaultModel);
+       // var viewables = viewerDocument.getRoot().search({'type':'geometry'});
+       // viewer.loadDocumentNode(viewerDocument, viewables[0]);
+    
     }
-
+    
     function onDocumentLoadFailure() {
         console.error('Failed fetching Forge manifest');
-    }    
+    }
+    
+    
+    </script>
+</body>
 
-});
-var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6amVkZGFidWNrZXQwMDEvSmVkZGFoX1N1cGVyX0RvbWVfRV8xMi0xXzAwMS56aXA';
-Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
-
-function onDocumentLoadSuccess(viewerDocument) {
-    var defaultModel = viewerDocument.getRoot().getDefaultGeometry();
-    viewer.loadDocumentNode(viewerDocument, defaultModel);
-   // var viewables = viewerDocument.getRoot().search({'type':'geometry'});
-   // viewer.loadDocumentNode(viewerDocument, viewables[0]);
-
-}
-
-function onDocumentLoadFailure() {
-    console.error('Failed fetching Forge manifest');
-}
-
-
-</script>
+</html>
